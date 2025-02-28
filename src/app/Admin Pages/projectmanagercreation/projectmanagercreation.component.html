@@ -1,0 +1,111 @@
+<!-- <p>insurance-page works!</p> -->
+<div class="container1">
+  <br />
+  <div class="row">
+    <div class="col-lg-4"><h1>Manager Details</h1></div>
+    <div class="col-lg-8 remove">
+      <div class="row">
+        <div class="frame-1171275852">
+          <div class="col-lg-8"></div>
+          <div class="col-lg-4">
+            <div class="frame-1171275851" (click)="profile()">
+              <img class="ellipse-3226" [src]="img" />
+              <div class="frame-1171275855">
+                <div class="frame-1171275849">
+                  <div class="alex-meian">{{ userName }}</div>
+                  <div class="prodcut-manager">{{ userType }}</div>
+                </div>
+                <!--                 <svg
+                  class="icons2"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M2.69038 4.60367C2.49709 4.80248 2.49709 5.12482 2.69038 5.32363L6.64997 9.39636C6.74279 9.49183 6.86869 9.54547 6.99996 9.54547C7.13122 9.54547 7.25712 9.49183 7.34994 9.39636L11.3095 5.32363C11.5028 5.12482 11.5028 4.80248 11.3095 4.60367C11.1162 4.40486 10.8029 4.40486 10.6096 4.60367L6.99996 8.31641L3.39034 4.60367C3.19705 4.40486 2.88367 4.40486 2.69038 4.60367Z"
+                    fill="#292D32"
+                  />
+                </svg>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="top-header">
+  <h2>Manager Details</h2>
+</div>
+
+<div>
+  <form [formGroup]="insuranceForm" class="insu-form">
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="form-outline">
+          <label>Name: </label>
+          <input
+            aria-placeholder="Project Manager Name"
+            class="form-control"
+            formControlName="name"
+          />
+        </div>
+
+        <div class="form-outline">
+          <label>Email: </label>
+          <input
+            aria-placeholder="Email"
+            class="form-control"
+            formControlName="email"
+          />
+        </div>
+
+        <div class="form-outline">
+          <label>Phone Number: </label>
+          <input
+            aria-placeholder="Phone Number"
+            class="form-control"
+            formControlName="number"
+          />
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="form-outline">
+          <label class="form-label"
+            >Company<span class="text-danger">*</span></label
+          >
+          <select
+            type="text"
+            id="typeText"
+            class="form-control"
+            formControlName="company"
+            required
+          >
+            <option *ngFor="let company of documentId" [value]="company">
+              {{ company }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-outline">
+          <label class="form-label"
+            >Password<span class="text-danger">*</span></label
+          >
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Password"
+            required
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <button type="submit" (click)="submit()" class="btn btn-success">Save</button>
+</div>

@@ -1,0 +1,353 @@
+// body{
+// 	margin: 0;
+// 	padding: 0;
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	min-height: 100vh;
+// 	font-family: 'Jost', sans-serif;
+// 	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+// }
+// .main{
+// 	margin-left: 485px;
+// 	width: 350px;
+// 	height: 500px;
+// 	background: red;
+// 	overflow: hidden;
+// 	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
+// 	border-radius: 10px;
+// 	box-shadow: 5px 20px 50px #000;
+// }
+// #chk{
+// 	display: none;
+// }
+// .signup{
+// 	position: relative;
+// 	width:100%;
+// 	height: 100%;
+// }
+// label{
+// 	color: #fff;
+// 	font-size: 2.3em;
+// 	justify-content: center;
+// 	display: flex;
+// 	margin: 60px;
+// 	font-weight: bold;
+// 	cursor: pointer;
+// 	transition: .5s ease-in-out;
+// }
+// input{
+// 	width: 60%;
+// 	height: 20px;
+// 	background: #e0dede;
+// 	justify-content: center;
+// 	display: flex;
+// 	margin: 20px auto;
+// 	padding: 10px;
+// 	border: none;
+// 	outline: none;
+// 	border-radius: 5px;
+// }
+// button{
+// 	width: 60%;
+// 	height: 40px;
+// 	margin: 10px auto;
+// 	justify-content: center;
+// 	display: block;
+// 	color: #fff;
+// 	background: #573b8a;
+// 	font-size: 1em;
+// 	font-weight: bold;
+// 	margin-top: 20px;
+// 	outline: none;
+// 	border: none;
+// 	border-radius: 5px;
+// 	transition: .2s ease-in;
+// 	cursor: pointer;
+// }
+// button:hover{
+// 	background: #6d44b8;
+// }
+// .login{
+// 	height: 460px;
+// 	background: #eee;
+// 	border-radius: 60% / 10%;
+// 	transform: translateY(-180px);
+// 	transition: .8s ease-in-out;
+// }
+// .login label{
+// 	color: #573b8a;
+// 	transform: scale(.6);
+// }
+
+// #chk:checked ~ .login{
+// 	transform: translateY(-500px);
+// }
+// #chk:checked ~ .login label{
+// 	transform: scale(1);
+// }
+// #chk:checked ~ .signup label{
+// 	transform: scale(.6);
+// }
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  font-family: "Jost", sans-serif;
+
+  .img {
+    width: 65%;
+    height: 100%;
+
+    @media (max-width: 1536px) {
+      width: 55%;
+      height: 100%;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+}
+
+.main {
+  width: 700px;
+  height: 100%;
+  background: white;
+  overflow: hidden;
+  //background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
+  border-radius: 10px;
+  box-shadow: 5px 20px 50px #000;
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
+}
+
+// @media (min-width: 768px) and (max-width: 1024px){
+// 	.main{
+// 		width: 400px;
+// 	}
+// }
+#chk {
+  display: none;
+}
+
+.popup-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000021;
+}
+
+.popup {
+  margin-left: 186px;
+  background-color: white;
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+@media (max-width: 1024px) {
+  .popup {
+    margin-left: 0;
+    background-color: white;
+    width: 370px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 398px) {
+  .popup {
+    width: 320px;
+  }
+}
+
+input {
+  width: 60%;
+  height: 30px;
+  background: #e0dede;
+  justify-content: center;
+  display: flex;
+  margin: -4px auto;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+option {
+  width: 60%;
+  height: 20px;
+  background: #e0dede;
+  justify-content: center;
+  display: flex;
+  margin: 20px auto;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+select {
+  background: #e0dede;
+  justify-content: center;
+  display: flex;
+  margin: 20px auto;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+button {
+  width: 30%;
+  height: 40px;
+  margin: 10px auto;
+  justify-content: center;
+  display: block;
+  color: #fff;
+  background: #16bbb1;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #6d44b8;
+}
+
+.login {
+  background: transparent;
+  border-radius: 60% / 10%;
+  transform: translateY(140px);
+  transition: 0.8s ease-in-out;
+}
+
+.login label {
+  color: #0c385c;
+  font-size: 15px;
+  transform: translateX(140px);
+  margin-left: 0%;
+}
+
+.login .head1 {
+  height: 20px;
+  margin-top: 0px;
+  margin-bottom: -5px;
+}
+
+.login .head2 {
+  height: 20px;
+  margin-bottom: 250px;
+}
+
+#chk:checked~.login {
+  transform: translateY(-500px);
+}
+
+#chk:checked~.login label {
+  transform: scale(1);
+}
+
+.login .form-group {
+  margin-top: 60px;
+  text-align: center;
+  transform: scale(2.5);
+}
+
+.password-input {
+  position: relative;
+
+  .password-toggle {
+    position: absolute;
+    top: 74%;
+    left: 74%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+}
+
+.toast {
+  width: 1500px !important;
+}
+
+.logo {
+  // display: flex;
+  transition: width 0.3s ease-in-out;
+  height: 60px;
+  font-size: 1.2rem;
+  // line-height: 80px;
+  text-align: left;
+  padding: 0 15px;
+  position: relative;
+  z-index: 999;
+
+  // justify-content: center;
+  // width: 100%;
+  .logo-mini {
+    display: inline-block;
+    text-align: center;
+  }
+
+  // .light-logo{
+  // 	margin-left: 10px;
+  // }
+  .light-logo {
+    img {
+      max-width: 45%;
+    }
+  }
+}
+
+.checkbox {
+  margin-left: 100px;
+}
+
+// @media (max-width: 480px) {
+//   .main {
+//     width: 330px;
+//     height: 525px;
+//   }
+//   .login .form-group {
+//     margin-top: 50px;
+//   }
+//   // .logo .light-logo {
+//   // 	margin-left: 8px;
+//   // }
+//   .password-toggle {
+//     right: 55px;
+//   }
+//   .checkbox {
+//     margin-left: 75px;
+//   }
+//   .login .head1 {
+//     margin-top: 0px;
+//     margin-bottom: -5px;
+//   }
+//   .login label {
+//     font-size: 10px;
+//   }
+//   .login .head2 {
+//     margin-bottom: -15px;
+//   }
+//   input {
+//     width: 75%;
+//   }
+// }

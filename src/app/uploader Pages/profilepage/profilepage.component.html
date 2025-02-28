@@ -1,0 +1,153 @@
+<div class="container1">
+  <br />
+  <div class="row">
+    <div class="col-lg-4">
+      <h1>
+        <i class="fa fa-long-arrow-left" (click)="back()"></i
+        ><span style="margin-left: 1%"> User Details</span>
+      </h1>
+    </div>
+    <div class="col-lg-8 remove">
+      <div class="row">
+        <div class="frame-1171275852">
+          <div class="col-lg-8"></div>
+          <div class="col-lg-4">
+            <div class="frame-1171275851">
+              <img class="ellipse-3226" [src]="img" />
+              <div class="frame-1171275855">
+                <div class="frame-1171275849">
+                  <div class="alex-meian">{{ userName }}</div>
+                  <div class="prodcut-manager">{{ userType }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="top-header">
+  <h2>Profile</h2>
+</div>
+
+<div>
+  <form [formGroup]="profileForm" class="insu-form">
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="form-outline">
+          <label>Name</label>
+          <input
+            aria-placeholder="Company Name"
+            class="form-control"
+            formControlName="name"
+            [(ngModel)]="userName"
+            [readonly]="userName !== ''"
+          />
+        </div>
+
+        <div class="form-outline">
+          <label for="modal-type">Photo</label>
+          <input
+            *ngIf="!datas.url"
+            type="file"
+            accept=".jpg , .jpeg ,.png"
+            class="form-control"
+            formControlName="photo"
+            (change)="onFileSelected($event)"
+          />
+          <input
+            *ngIf="datas.url"
+            type="file"
+            id="actual-btn"
+            accept=".jpg , .jpeg ,.png"
+            (change)="onFileSelected($event)"
+            hidden
+          />
+
+          <!--our custom file upload button-->
+          <label class="label" *ngIf="datas" for="actual-btn"
+            >Update Photo</label
+          >
+          <ul>
+            <li *ngFor="let file of selectedFiles">
+              {{ file.name }}
+              <button
+                class="fa fa-trash"
+                style="
+                  border: none;
+                  color: rgb(155, 22, 22);
+                  background-color: #ffffff;
+                "
+                (click)="onDelete(file)"
+              ></button>
+              <button
+                class="fa fa-download"
+                (click)="onDownload(file)"
+                style="
+                  border: none;
+                  color: rgb(9, 126, 58);
+                  background-color: #ffffff;
+                "
+              ></button>
+            </li>
+          </ul>
+          <div *ngIf="datas.url" style="position: relative">
+            <button type="submit" class="close AClass" (click)="delete()">
+              <span>&times;</span>
+            </button>
+          </div>
+          <img
+            *ngIf="datas.url"
+            [src]="datas.url"
+            style="height: 100px; width: 100px"
+          />
+        </div>
+
+        <div class="form-outline">
+          <label class="form-label"
+            >Employee Id<span class="text-danger">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            formControlName="id"
+            [(ngModel)]="datas.id"
+            [readonly]="datas.id !== ''"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="form-outline">
+          <label class="form-label"
+            >Phone Number<span class="text-danger">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            formControlName="phone"
+            [(ngModel)]="datas.number"
+            [readonly]="datas.number !== ''"
+            required
+          />
+        </div>
+        <div class="form-outline">
+          <label class="form-label"
+            >Email<span class="text-danger">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            formControlName="email"
+            [(ngModel)]="datas.email"
+            [readonly]="datas.email !== ''"
+            required
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <button type="submit" (click)="submit()" class="btn btn-success">Save</button>
+</div>

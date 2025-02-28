@@ -1,0 +1,71 @@
+<div class="container1">
+  <div class="top-header">
+    <br />
+    <div class="row">
+      <div class="col-lg-8">
+        <h1>
+          <i
+            class="fa fa-long-arrow-left"
+            style="font-weight: normal; cursor: pointer"
+            (click)="back()"
+          ></i>
+          Map
+          <i class="responsive" aria-hidden="true" (click)="showpopup()"
+            ><img
+              style="height: 2vh"
+              src="../../../assets/images/layer.png"
+            /><span style="margin-left: 0.5%">Layer Options</span></i
+          >
+        </h1>
+      </div>
+    </div>
+  </div>
+  <div class="map" id="map"></div>
+</div>
+<div class="popup-container" *ngIf="showPopup">
+  <div class="popup">
+    <h3 style="display: flex; align-items: center">
+      Map Options<i
+        class="fa fa-times"
+        id="closeicon"
+        aria-hidden="true"
+        (click)="closePopup()"
+        style="margin-left: 70%; cursor: pointer"
+      ></i>
+    </h3>
+    <hr />
+    <div>
+      <label class="checkbox-label"
+        ><label (click)="toggleTIF()">Ortho</label>
+        <input
+          type="checkbox"
+          (click)="toggleTIF()"
+          [(ngModel)]="tifCheckbox"
+        />
+        <span class="mark"></span>
+      </label>
+    </div>
+    <div>
+      <label class="checkbox-label"
+        ><label (click)="toggleTIF1()">DEM</label>
+        <input
+          type="checkbox"
+          (click)="toggleTIF1()"
+          [(ngModel)]="tifCheckbox1"
+        />
+        <span class="mark"></span>
+      </label>
+    </div>
+    <div>
+      <label class="checkbox-label"
+        ><label (click)="toggleKML2()">GeoTag</label>
+        <input
+          type="checkbox"
+          (click)="toggleKML2()"
+          [(ngModel)]="kmlCheckbox2"
+        />
+        <span class="mark"></span>
+      </label>
+    </div>
+  </div>
+</div>

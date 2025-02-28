@@ -1,0 +1,72 @@
+#scene-container {
+  width: 100%;
+  height: 92vh;
+
+  @media (max-height: 1080px) {
+    height: 91vh;
+  }
+
+  @media (max-height: 901px) {
+    height: 91vh;
+  }
+
+  @media (max-height: 865px) {
+    height: 90vh;
+  }
+
+  @media (max-height: 769px) {
+    height: 89vh;
+  }
+
+  @media (max-height: 721px) {
+    height: 88vh;
+  }
+}
+
+iframe {
+  width: 100%;
+  height: 92vh;
+
+  @media (max-height: 1080px) {
+    height: 91vh;
+  }
+
+  @media (max-height: 901px) {
+    height: 91vh;
+  }
+
+  @media (max-height: 865px) {
+    height: 90vh;
+  }
+
+  @media (max-height: 769px) {
+    height: 89vh;
+  }
+
+  @media (max-height: 721px) {
+    height: 88vh;
+  }
+
+  @media (max-height: 699px) {
+    height: 87vh;
+  }
+}
+
+.container1 {
+  background: #002e83;
+  padding-bottom: 0.35%;
+  color: #000;
+  position: fixed;
+  width: -webkit-fill-available;
+  z-index: 9998;
+
+  .row {
+    margin-left: 2%;
+  }
+
+  h1 {
+    font-weight: bolder;
+    margin-top: 1%;
+    color: #fff;
+  }
+}

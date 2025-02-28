@@ -1,0 +1,337 @@
+<style>
+  .mobi-bar .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+
+  .mobi-bar .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .mobi-bar .sidenav a:hover {
+    color: #f1f1f1;
+  }
+
+  .mobi-bar .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  @media screen and (max-height: 450px) {
+    .mobi-bar .sidenav {
+      padding-top: 15px;
+    }
+    .mobi-bar .sidenav a {
+      font-size: 18px;
+    }
+  }
+  @media (min-width: 1025px) {
+    .mobi-bar {
+      display: none;
+    }
+  }
+</style>
+<app-admin-sidebar
+  [isExpanded]="sidebarExpanded"
+  (toggleSidebar)="sidebarExpanded = !sidebarExpanded"
+></app-admin-sidebar>
+<!-- <div class="sidebar" [ngClass]="{ expanded: isExpanded }">
+  <div class="main-header header">
+    <a
+      href="javascript:;"
+      class="waves-effect toggle"
+      role="button"
+      (click)="handleSidebarToggle()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-menu"
+      >
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </a>
+  </div>
+</div> -->
+<div
+  class="clearfix bodyWrapper"
+  [ngClass]="{ sidebarExpanded: sidebarExpanded }"
+>
+  <div class="top-header">
+    <div class="mobi-bar">
+      <!--<div id="mySidenav" class="sidenav">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+              <a href="#">About</a>
+              <a href="#">Services</a>
+              <a href="#">Clients</a>
+              <a href="#">Contact</a>
+            </div> -->
+      <a
+        href="javascript:;"
+        class="waves-effect toggle"
+        role="button"
+        (click)="sideBarNav()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="26"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 12h14m-7-7l7 7l-7 7"
+          />
+        </svg>
+      </a>
+    </div>
+    <div class="frame-1171275851">
+      <img class="ellipse-3226" [src]="img" />
+      <div class="frame-1171275855">
+        <div class="frame-1171275849">
+          <div class="alex-meian">{{ userName }}</div>
+          <div class="prodcut-manager">{{ userType }}</div>
+        </div>
+      </div>
+    </div>
+    <!--<div class="search-bx mx-5">
+      <form>
+        <div class="input-group">
+                <input required type="search" class="form-control" placeholder="Search">
+                  <div class="input-group-append">
+                <button class="btn"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+      </form>
+    </div>-->
+    <!-- <div class="login-user">
+      <div class="profile">
+        <img
+          class="avatar"
+          (click)="toggleDropdown()"
+          src="../../assets/images/avatar-13.png"
+          alt=""
+        />
+        <div
+          class="dropdown"
+          *ngIf="showDropdown"
+          style="height: 33px; margin-top: 5px"
+        >
+          <ul>
+            <li (click)="logout()">Logout</li>
+          </ul>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <div class="containerWrapper">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- sidenavbar -->
+<div class="popup-container" *ngIf="sideBar">
+  <div class="popup" style="position: relative; z-index: 9999">
+    <div class="head">
+      <a class="logo">
+        <!-- logo-->
+        <div class="logo-mini">
+          <img src="../../assets/images/Vaanam Sidebar.svg" alt="logo" />
+        </div>
+      </a>
+      <a
+        href="javascript:;"
+        class="closebar toggle"
+        role="button"
+        (click)="closePopup()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="26"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 12H1M8 19L1 12l7-7"
+          />
+        </svg>
+      </a>
+      <!-- <i class="fa fa-times" id="closeicon"aria-hidden="true" (click)="closePopup()"></i> -->
+    </div>
+    <hr />
+    <div class="menu">
+      <div class="button" (click)="project()">
+        <div class="frame-1171275840">
+          <svg
+            class="icons"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M12 3C12.5523 3 13 3.44772 13 4V11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H13V20C13 20.5523 12.5523 21 12 21C11.4477 21 11 20.5523 11 20V13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H11V4C11 3.44772 11.4477 3 12 3Z"
+              fill="white"
+            />
+          </svg>
+        </div>
+        <div class="create-new-project">Create new project</div>
+      </div>
+      <div class="button1">
+        <div class="frame-1171275841">
+          <div
+            class="expand-tab2"
+            [ngClass]="{ active: activeIndex === 0 }"
+            (click)="Dashboard()"
+          >
+            <div class="icons2">
+              <div class="vuesax-linear-category-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="18"
+                  viewBox="0 0 576 512"
+                >
+                  <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                  <path
+                    d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="dashboard">Dashboard</div>
+          </div>
+          <div
+            class="expand-tab2"
+            [ngClass]="{ active: activeIndex === 2 }"
+            (click)="Project()"
+          >
+            <div class="icons2">
+              <div class="vuesax-linear-category-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="12"
+                  viewBox="0 0 384 512"
+                >
+                  <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                  <path
+                    d="M192 0c-41.8 0-77.4 26.7-90.5 64H64C28.7 64 0 92.7 0 128V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H282.5C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM128 256a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zM80 432c0-44.2 35.8-80 80-80h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="dashboard2">Projects</div>
+          </div>
+          <div
+            class="expand-tab2"
+            [ngClass]="{ active: activeIndex === 3 }"
+            (click)="Manager()"
+          >
+            <div class="icons2">
+              <div class="vuesax-linear-category-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="20"
+                  viewBox="0 0 640 512"
+                >
+                  <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                  <path
+                    d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM504 312V248H440c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V136c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H552v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="dashboard2">User Management</div>
+          </div>
+          <div
+            class="expand-tab2"
+            [ngClass]="{ active: activeIndex === 1 }"
+            (click)="Company()"
+          >
+            <div class="icons2">
+              <div class="vuesax-linear-category-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="20"
+                  viewBox="0 0 640 512"
+                >
+                  <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                  <path
+                    d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="dashboard2">Clients</div>
+          </div>
+          <div
+            class="expand-tab3"
+            [ngClass]="{ active: activeIndex === 0 }"
+            (click)="logout()"
+            style="background: #002e83"
+          >
+            <div class="icons2">
+              <div class="vuesax-linear-category-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="16"
+                  viewBox="0 0 512 512"
+                >
+                  <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                  <path
+                    d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"
+                    fill="#ffaa33"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div style="color: #ffffff; font-size: 20px; font-weight: bold">
+              Logout
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,253 @@
+<div class="container1">
+  <br />
+  <div class="row">
+    <div class="col-lg-4"><h1>Manager Details</h1></div>
+    <div class="col-lg-8 remove">
+      <div class="row">
+        <div class="frame-1171275852">
+          <div class="col-lg-8">
+            <div class="frame-1171275846">
+              <div class="frame-1171275845">
+                <div class="icons">
+                  <div
+                    class="vuesax-linear-search-normal"
+                    style="margin-left: 50%"
+                  >
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <input
+                  style="border: none; outline: none"
+                  class="search-for-anything"
+                  type="text"
+                  [(ngModel)]="filterValue"
+                  (input)="applyFilter()"
+                  placeholder="Search for anything..."
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="frame-1171275851" (click)="profile()">
+              <img class="ellipse-3226" [src]="img" />
+              <div class="frame-1171275855">
+                <div class="frame-1171275849">
+                  <div class="alex-meian">{{ userName }}</div>
+                  <div class="prodcut-manager">{{ userType }}</div>
+                </div>
+                <!--                 <svg
+                  class="icons2"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M2.69038 4.60367C2.49709 4.80248 2.49709 5.12482 2.69038 5.32363L6.64997 9.39636C6.74279 9.49183 6.86869 9.54547 6.99996 9.54547C7.13122 9.54547 7.25712 9.49183 7.34994 9.39636L11.3095 5.32363C11.5028 5.12482 11.5028 4.80248 11.3095 4.60367C11.1162 4.40486 10.8029 4.40486 10.6096 4.60367L6.99996 8.31641L3.39034 4.60367C3.19705 4.40486 2.88367 4.40486 2.69038 4.60367Z"
+                    fill="#292D32"
+                  />
+                </svg>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="top-header">
+  <h2>Manager Details</h2>
+  <form>
+    <div class="AddIcon">
+      <button
+        style="margin-right: 44px"
+        (click)="viewAddTask()"
+        class="btn btn-info pull-right"
+      >
+        <i class="fa fa-plus"></i>Add Manager
+      </button>
+    </div>
+  </form>
+</div>
+<div class="row tablecon">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>S.NO</th>
+        <th>Manager&nbsp;Name</th>
+        <th>Company&nbsp;Name</th>
+        <th>Email</th>
+        <th>Phone&nbsp;Number</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let task of filterValue ? filteredData : companies;
+          let i = index
+        "
+      >
+        <td>{{ i + 1 }}</td>
+        <td>{{ task.name }}</td>
+        <td>{{ task.company }}</td>
+        <td>{{ task.email }}</td>
+        <td>{{ task.number }}</td>
+        <td>
+          <button
+            class="fa fa-edit"
+            style="
+              border: none;
+              color: #002e83;
+              background-color: transparent;
+              font-size: 24px;
+            "
+            (click)="editTask(task)"
+          ></button>
+          <button
+            class="fa fa-trash"
+            style="
+              border: none;
+              color: rgb(155, 22, 22);
+              background-color: transparent;
+              font-size: 24px;
+            "
+            (click)="delete(task)"
+          ></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div
+  class="container mobile-table"
+  *ngFor="let task of companies; let i = index"
+>
+  <div class="card">
+    <div class="title">
+      <h3>Manager {{ i + 1 }}</h3>
+    </div>
+    <div class="details">
+      <h3>
+        Manager Name: <span>{{ task.name }}</span>
+      </h3>
+      <h3>
+        Company Name : <span>{{ task.company }}</span>
+      </h3>
+      <h3>
+        Email : <span>{{ task.email }}</span>
+      </h3>
+      <h3>
+        Phone Number : <span>{{ task.number }}</span>
+      </h3>
+      <h3>
+        Action:
+        <span>
+          <button
+            class="fa fa-edit"
+            style="
+              border: none;
+              color: #002e83;
+              background-color: transparent;
+              font-size: 24px;
+            "
+            (click)="editTask(task)"
+          ></button>
+          <button
+            class="fa fa-trash"
+            style="
+              border: none;
+              color: rgb(155, 22, 22);
+              background-color: transparent;
+              font-size: 24px;
+            "
+            (click)="delete(task)"
+          ></button
+        ></span>
+      </h3>
+    </div>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showEditPopup">
+  <div class="popup">
+    <h3>Edit Details</h3>
+    <hr />
+    <form [formGroup]="form" *ngIf="selectedTask" (ngSubmit)="updateTask()">
+      <div class="form-group">
+        <label for="firstName">Manager Name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="name"
+          value="{{ selectedTask.name }}"
+          readonly
+        />
+      </div>
+      <div class="form-group">
+        <label for="status">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          formControlName="email"
+          value="{{ selectedTask.email }}"
+          readonly
+        />
+      </div>
+      <div class="form-group">
+        <label for="lastName">Phone Number</label>
+        <input
+          type="tel"
+          class="form-control"
+          formControlName="number"
+          value="{{ selectedTask.number }}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="firstName">Company Name</label>
+        <select
+          class="form-control"
+          formControlName="company"
+          value="{{ selectedTask.company }}"
+        >
+          <option *ngFor="let company of documentId" [value]="company">
+            {{ company }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <div class="buttons">
+          <button
+            type="submit"
+            class="btn btn-outline-info"
+            type="submit"
+            (click)="updateTask()"
+          >
+            Update
+          </button>
+          <button class="btn btn-outline-secondary" (click)="cancelEdit()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showDeletePopup">
+  <div class="popup">
+    <h3>Are you sure you want to delete this one?</h3>
+    <div class="delete_button">
+      <button
+        class="btn btn-outline-info"
+        (click)="deleteTask(deleteselectedTask)"
+      >
+        Yes
+      </button>
+      <button class="btn btn-outline-secondary" (click)="camceldelete()">
+        No
+      </button>
+    </div>
+  </div>
+</div>

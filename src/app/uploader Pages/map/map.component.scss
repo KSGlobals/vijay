@@ -1,0 +1,243 @@
+/* Apply styles to the container to use flex layout */
+.container1 {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding-left: 0%;
+  padding-right: 0%;
+  flex-direction: column;
+}
+
+.waves-effect {
+  position: absolute;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  user-select: none;
+  padding: 10px;
+  top: 10px;
+  border-radius: 4px;
+  background-color: black;
+  border-color: #ffffff;
+  color: #46bc5c !important;
+  vertical-align: middle;
+  z-index: 9999;
+  transition: 0.3s ease-out;
+}
+
+.waves-effect1 {
+  position: absolute;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  user-select: none;
+  padding: 10px;
+  background-color: black;
+  border-color: #ffffff;
+  color: #ffffff !important;
+  vertical-align: middle;
+  z-index: 9999;
+  transition: 0.3s ease-out;
+}
+
+.popup-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000021;
+}
+
+.popup {
+  margin-left: 186px;
+  background-color: white;
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+@media (max-width: 1024px) {
+  .popup {
+    margin-left: 0;
+    background-color: white;
+    width: 370px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 398px) {
+  .popup {
+    width: 320px;
+  }
+}
+
+.btn-success {
+  height: 3vh;
+  background-color: #000;
+  color: #ffffff;
+  top: 97%;
+  position: relative;
+  left: -97%;
+}
+
+.btn-success:hover {
+  background-color: #e65f2b;
+  color: #ffffff;
+}
+
+/* Style the sidebar to occupy 20% of the width */
+.sidebar {
+  flex: 1;
+  /* This will make the sidebar occupy 20% of the container's width */
+  background-color: black;
+  /* Example background color */
+  padding: 20px;
+  /* Add padding or other styles as needed */
+}
+
+/* Style the map to occupy 80% of the width */
+.map {
+  flex: 6;
+  /* This will make the map occupy 80% of the container's width */
+  background-color: #fff;
+  position: relative;
+  /* Example background color */
+  /* Add padding or other styles as needed */
+}
+
+.map-container {
+  flex: 1;
+  /* Allow the map container to expand and fill the remaining space */
+  position: relative;
+  /* Add other styles as needed for the map container */
+}
+
+.checkbox-label {
+  color: black;
+  display: block;
+  position: relative;
+  margin-left: 64px;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 24px;
+  height: 50px;
+  width: 24px;
+  clear: both;
+}
+
+.checkbox-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkbox-label .mark {
+  top: 30px;
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  background-color: transparent;
+  border-radius: 5px;
+  transition: all 0.3s ease-in;
+  border: 2px solid black;
+  margin-left: -55px;
+  margin-top: -29px;
+}
+
+.checkbox-label input:checked~.mark {
+  background-color: #002e83;
+  border-radius: 5px;
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+  border: 2px solid black;
+}
+
+.checkbox-label .mark::after {
+  position: absolute;
+  content: "";
+  border-radius: 5px;
+}
+
+.checkbox-label input:checked~.mark::after {
+  transform: rotate(45deg) scale(1);
+  left: 8px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: solid #ffaa33;
+  border-width: 0 2px 2px 0;
+  border-radius: 0;
+}
+
+/* For Ripple Effect */
+.checkbox-label .mark::before {
+  position: absolute;
+  content: "";
+  border-radius: 10px;
+  border: 5px solid yellow;
+  transform: scale(0);
+}
+
+.checkbox-label input:checked~.mark::before {
+  left: -3px;
+  top: -3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  transform: scale(3);
+  opacity: 0;
+  transition: all 0.3s ease-out;
+}
+
+.top-header {
+  background: #002e83;
+  padding-bottom: 0.35%;
+  color: #000;
+
+  .row {
+    margin-left: 2%;
+  }
+
+  h1 {
+    font-weight: bolder;
+    margin-top: 1%;
+    color: #fff
+  }
+}
+
+.responsive {
+  font-weight: normal;
+  margin-left: 59.8%;
+  cursor: pointer;
+  font-size: 12px;
+  color: black;
+  background: white;
+  padding: 1% 1.5%;
+
+  @media (max-width: 1536px) {
+    margin-left: 56%;
+  }
+
+  @media (max-width: 1441px) {
+    margin-left: 55%;
+  }
+
+  @media (max-width: 1367px) {
+    margin-left: 54%;
+  }
+
+  @media (max-width: 1281px) {
+    margin-left: 52%;
+  }
+
+  @media (max-width: 769px) {
+    margin-left: 29%;
+  }
+}

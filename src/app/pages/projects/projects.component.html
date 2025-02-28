@@ -1,0 +1,228 @@
+<!-- <p>insurance-page works!</p> -->
+<div class="container1">
+  <br />
+  <div class="row">
+    <div class="col-lg-4"><h1>Project Details</h1></div>
+    <div class="col-lg-8 remove">
+      <div class="row">
+        <div class="frame-1171275852">
+          <div class="col-lg-8"></div>
+          <div class="col-lg-4">
+            <div class="frame-1171275851" (click)="profile()">
+              <img class="ellipse-3226" [src]="img" />
+              <div class="frame-1171275855">
+                <div class="frame-1171275849">
+                  <div class="alex-meian">{{ userName }}</div>
+                  <div class="prodcut-manager">{{ userType }}</div>
+                </div>
+                <!--                 <svg
+                  class="icons2"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M2.69038 4.60367C2.49709 4.80248 2.49709 5.12482 2.69038 5.32363L6.64997 9.39636C6.74279 9.49183 6.86869 9.54547 6.99996 9.54547C7.13122 9.54547 7.25712 9.49183 7.34994 9.39636L11.3095 5.32363C11.5028 5.12482 11.5028 4.80248 11.3095 4.60367C11.1162 4.40486 10.8029 4.40486 10.6096 4.60367L6.99996 8.31641L3.39034 4.60367C3.19705 4.40486 2.88367 4.40486 2.69038 4.60367Z"
+                    fill="#292D32"
+                  />
+                </svg>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="top-header">
+  <h2>Project Details</h2>
+</div>
+
+<div>
+  <form [formGroup]="insuranceForm">
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="form-outline">
+          <label class="form-label"
+            >Company<span class="text-danger">*</span></label
+          >
+
+          <!-- Search Icon -->
+          <div class="search-icon-container" (click)="toggleSearchInput()">
+            <i class="fa fa-search"></i>
+          </div>
+
+          <!-- Search Input -->
+          <input
+            *ngIf="showSearchInput"
+            type="text"
+            [(ngModel)]="inputValue"
+            (input)="filterCompanies()"
+            class="form-control"
+            formControlName="company"
+            placeholder="Search Company"
+          />
+
+          <!-- Select Dropdown -->
+          <select
+            type="text"
+            id="typeText"
+            class="form-control"
+            formControlName="company"
+            [(ngModel)]="selectedCompany"
+            (change)="fetchSPOC()"
+            required
+          >
+            <option
+              *ngFor="
+                let company of inputValue ? filteredCompanies : documentId
+              "
+              [value]="company"
+            >
+              {{ company }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-outline">
+          <label>Project Title: </label>
+          <input
+            aria-placeholder="Project Title"
+            id="vehicle-type"
+            class="form-control"
+            formControlName="title"
+          />
+        </div>
+        <div class="form-outline">
+          <label>Start Date: </label>
+          <input type="date" class="form-control" formControlName="date" />
+        </div>
+        <div class="form-outline">
+          <label class="form-label">Work Order</label>
+          <input
+            type="file"
+            accept=".pdf"
+            class="form-control"
+            formControlName="workorder"
+            (change)="onFileSelected($event)"
+          />
+          <ul>
+            <li *ngFor="let file of selectedFiles">
+              {{ file.name }}
+              <button
+                class="fa fa-trash"
+                style="
+                  border: none;
+                  color: rgb(155, 22, 22);
+                  background-color: #ffffff;
+                "
+                (click)="onDelete(file)"
+              ></button>
+              <button
+                class="fa fa-download"
+                (click)="onDownload(file)"
+                style="
+                  border: none;
+                  color: rgb(9, 126, 58);
+                  background-color: #ffffff;
+                "
+              ></button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="form-outline">
+          <label>Company SPOC: </label>
+          <select
+            aria-placeholder="Project Manager"
+            id="vehicle-type"
+            class="form-control"
+            formControlName="SPOC"
+            [(ngModel)]="selectedSPOC"
+            name="SPOC"
+          >
+            <option *ngFor="let manager of selectedSPOC" [value]="manager">
+              {{ manager }}
+            </option>
+          </select>
+        </div>
+        <div class="form-outline">
+          <label class="form-label"
+            >Project Manager<span class="text-danger">*</span></label
+          >
+          <select
+            type="text"
+            id="typeText"
+            class="form-control"
+            formControlName="manager"
+            placeholder="Project Manager"
+            required
+          >
+            <option *ngFor="let manager of projectManagers" [value]="manager">
+              {{ manager }}
+            </option>
+          </select>
+        </div>
+        <div class="form-outline">
+          <label>Due Date: </label>
+          <input type="date" class="form-control" formControlName="due" />
+        </div>
+        <div class="form-outline">
+          <label class="form-label"
+            >Scope of Project <span class="text-danger">*</span></label
+          >
+          <select
+            type="text"
+            id="typeText"
+            class="form-control"
+            formControlName="scope"
+            placeholder="Kind of Projcts"
+            required
+          >
+            <option>Land Digitization</option>
+            <option>Geotagging</option>
+            <option>Volumetric Analysis</option>
+            <option>3D Modeling</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12">
+        <div class="form-outline">
+          <label class="form-label"
+            >Location<span class="text-danger">*</span></label
+          >
+          <div id="map" #mapContainer style="height: 300px"></div>
+          <input
+            type="text"
+            [(ngModel)]="selectedLocation"
+            class="form-control"
+            formControlName="location"
+            placeholder="Search or click on the map"
+            (input)="onLocationInput($event)"
+            required
+          />
+          <div
+            style="cursor: pointer"
+            *ngIf="suggestions.length > 0"
+            class="suggestion-list"
+          >
+            <div
+              *ngFor="let suggestion of suggestions"
+              (click)="selectSuggestion(suggestion)"
+            >
+              {{ suggestion }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <button type="submit" (click)="submit()" class="btn btn-success">Save</button>
+</div>

@@ -1,0 +1,140 @@
+<body>
+  <img class="img" src="../../assets/images/operador-de-dron.jpg" />
+  <div class="main">
+    <div class="login">
+      <form [formGroup]="loginForm">
+        <div class="form-group">
+          <a href="index.html" class="logo">
+            <!-- logo-->
+            <div class="logo-mini w-25">
+              <span class="light-logo"
+                ><img src="../../assets/images/Vaanam Login.png" alt="logo"
+              /></span>
+            </div>
+            <!-- <div class="logo-lg">
+                <span class="light-logo"><img src="../../assets/images/logo-dark-text.png" alt="logo"></span>
+            </div> -->
+          </a>
+        </div>
+        <br />
+        <br />
+        <div>
+          <div>
+            <label>Email</label>
+            <input
+              type="email"
+              formControlName="email"
+              placeholder="Email"
+              required
+            />
+          </div>
+          <br />
+          <div class="password-input">
+            <label>Password</label>
+            <input
+              required
+              type="{{ showPassword ? 'text' : 'password' }}"
+              placeholder="Enter Password"
+              formControlName="password"
+            />
+            <span
+              class="password-toggle"
+              (click)="showPassword = !showPassword"
+            >
+              <i class="fa fa-eye-slash" *ngIf="!showPassword"></i>
+              <i class="fa fa-eye" *ngIf="showPassword"></i>
+            </span>
+          </div>
+          <button (click)="login()">Login</button>
+        </div>
+      </form>
+      <div
+        class="text-center"
+        (click)="popup()"
+        style="color: blue; cursor: pointer"
+      >
+        Forgot Password?
+      </div>
+    </div>
+  </div>
+  <div class="popup-container" *ngIf="showPopup">
+    <div class="popup">
+      <h3 style="display: flex; align-items: center">
+        Forgot Password<i
+          class="fa fa-times"
+          id="closeicon"
+          aria-hidden="true"
+          (click)="closePopup()"
+          style="margin-left: 80%"
+        ></i>
+      </h3>
+      <hr />
+      <form [formGroup]="EmailForm" (ngSubmit)="Sendresetlink()">
+        <div class="form-group">
+          <label for="reason">Enter Your Email</label>
+          <input
+            type="email"
+            class="form-control w-100"
+            formControlName="Email"
+          />
+        </div>
+        <button
+          type="submit"
+          class="btn btn-success w-100"
+          (click)="Sendresetlink()"
+          [disabled]="!EmailForm.valid"
+        >
+          Reset&nbsp;Password
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="popup-container" *ngIf="showPopup1">
+    <div class="popup">
+      <h3 style="display: flex; align-items: center">
+        Update Password<i
+          class="fa fa-times"
+          id="closeicon"
+          aria-hidden="true"
+          (click)="closePopup1()"
+          style="margin-left: 80%"
+        ></i>
+      </h3>
+      <hr />
+      <form [formGroup]="PasswordForm" (ngSubmit)="Updatepassword()">
+        <div class="form-group">
+          <label for="reason">Enter Your Old Password</label>
+          <input
+            type="email"
+            class="form-control w-100"
+            formControlName="oldPassword"
+          />
+        </div>
+        <div class="form-group">
+          <label for="reason">Enter Your New Password</label>
+          <input
+            type="email"
+            class="form-control w-100"
+            formControlName="newPassword"
+          />
+        </div>
+        <div class="form-group">
+          <label for="reason">Confirm Your New Password</label>
+          <input
+            type="email"
+            class="form-control w-100"
+            formControlName="confirmNewPassword"
+          />
+        </div>
+        <button
+          type="submit"
+          class="btn btn-success w-100"
+          (click)="Updatepassword()"
+          [disabled]="!PasswordForm.valid"
+        >
+          Update&nbsp;Password
+        </button>
+      </form>
+    </div>
+  </div>
+</body>

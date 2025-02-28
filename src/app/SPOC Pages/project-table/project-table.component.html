@@ -1,0 +1,209 @@
+<div class="container1">
+  <br />
+  <div class="row">
+    <div class="col-lg-4"><h1>Project Details</h1></div>
+    <div class="col-lg-8 remove">
+      <div class="row">
+        <div class="frame-1171275852">
+          <div class="col-lg-8">
+            <div class="frame-1171275846">
+              <div class="frame-1171275845">
+                <div class="icons">
+                  <div
+                    class="vuesax-linear-search-normal"
+                    style="margin-left: 50%"
+                  >
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <input
+                  style="border: none; outline: none"
+                  class="search-for-anything"
+                  type="text"
+                  [(ngModel)]="filterValue"
+                  (input)="applyFilter()"
+                  placeholder="Search for anything..."
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="frame-1171275851" (click)="profile()">
+              <img class="ellipse-3226" [src]="img" />
+              <div class="frame-1171275855">
+                <div class="frame-1171275849">
+                  <div class="alex-meian">{{ userName }}</div>
+                  <div class="prodcut-manager">{{ userType }}</div>
+                </div>
+                <!--                 <svg
+                  class="icons2"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M2.69038 4.60367C2.49709 4.80248 2.49709 5.12482 2.69038 5.32363L6.64997 9.39636C6.74279 9.49183 6.86869 9.54547 6.99996 9.54547C7.13122 9.54547 7.25712 9.49183 7.34994 9.39636L11.3095 5.32363C11.5028 5.12482 11.5028 4.80248 11.3095 4.60367C11.1162 4.40486 10.8029 4.40486 10.6096 4.60367L6.99996 8.31641L3.39034 4.60367C3.19705 4.40486 2.88367 4.40486 2.69038 4.60367Z"
+                    fill="#292D32"
+                  />
+                </svg>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="top-header">
+  <h2>Project Details</h2>
+</div>
+<div class="row tablecon">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>S.NO</th>
+        <th>Project&nbsp;Name</th>
+        <th>Company</th>
+        <th>SPOC</th>
+        <th>Project&nbsp;Manager</th>
+        <th>Status</th>
+        <!-- <th>Note</th> -->
+        <th style="transform: translateX(9%)">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let task of filterValue ? filteredData : projects;
+          let i = index
+        "
+      >
+        <td>{{ i + 1 }}</td>
+        <td>{{ task.title }}</td>
+        <td>{{ task.company }}</td>
+        <td>{{ task.SPOC }}</td>
+        <td>{{ task.manager }}</td>
+        <td
+          *ngIf="task.status !== 'Rework' && task.status !== 'Delete Request'"
+        >
+          {{ task.status }}
+        </td>
+        <td
+          *ngIf="task.status === 'Rework' || task.status === 'Delete Request'"
+        >
+          In Progress
+        </td>
+        <td>
+          <span *ngIf="task.status === 'Pending'">Not Started</span>
+          <span
+            *ngIf="
+              task.status === 'In Progress' ||
+              task.status === 'Rework' ||
+              task.status === 'Delete Request'
+            "
+          >
+            Not Yet Completed </span
+          ><span *ngIf="task.status === 'In Approval'"> Not Approved </span>
+          <button
+            class="fa fa-eye"
+            style="
+              border: none;
+              color: #002e83;
+              background-color: transparent;
+              font-size: 24px;
+            "
+            (click)="viewTask(task.title)"
+          ></button>
+          <button
+            *ngIf="task.status === 'Completed'"
+            class="fa fa-download"
+            style="
+              border: none;
+              color: #002e83;
+              background-color: transparent;
+              font-size: 24px;
+            "
+            (click)="downloadFile(task)"
+          ></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div
+  class="container mobile-table"
+  *ngFor="let task of filterValue ? filteredData : projects; let i = index"
+>
+  <div class="card">
+    <div class="title">
+      <h3>Project {{ i + 1 }}</h3>
+    </div>
+    <div class="details">
+      <!-- <h3>Allocated Date : <span>{{ allocatedDate }}</span> </h3> -->
+      <h3>
+        Project Title : <span>{{ task.title }}</span>
+      </h3>
+      <h3>
+        Company: <span>{{ task.company }}</span>
+      </h3>
+      <h3>
+        SPOC : <span>{{ task.SPOC }}</span>
+      </h3>
+      <h3>
+        Project Manager : <span>{{ task.manager }}</span>
+      </h3>
+      <h3>
+        Status :
+        <span
+          *ngIf="task.status !== 'Rework' && task.status !== 'Delete Request'"
+          >{{ task.status }}</span
+        >
+        <span
+          *ngIf="task.status === 'Rework' || task.status === 'Delete Request'"
+          >In Progress</span
+        >
+      </h3>
+      <h3>
+        Action :
+        <span>
+          <span *ngIf="task.status === 'Pending'">Not Started</span>
+          <span
+            *ngIf="
+              task.status === 'In Progress' ||
+              task.status === 'Rework' ||
+              task.status === 'Delete Request'
+            "
+          >
+            Not Yet Completed </span
+          ><span *ngIf="task.status === 'In Approval'"> Not Approved </span>
+          <button
+            *ngIf="task.status === 'Completed'"
+            class="fa fa-eye"
+            style="
+              border: none;
+              color: #002e83;
+              background-color: transparent;
+              font-size: 24px;
+            "
+            (click)="viewTask(task.title)"
+          ></button>
+          <button
+            *ngIf="task.status === 'Completed'"
+            class="fa fa-download"
+            style="
+              border: none;
+              color: #002e83;
+              background-color: transparent;
+              font-size: 24px;
+            "
+            (click)="downloadFile(task)"
+          ></button
+        ></span>
+      </h3>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,561 @@
+<div class="container1">
+  <br />
+  <div class="row">
+    <div class="col-lg-8">
+      <h1>
+        <i
+          class="fa fa-long-arrow-left"
+          style="font-weight: normal; cursor: pointer"
+          (click)="back()"
+        ></i>
+        {{ taskTitle }}
+      </h1>
+    </div>
+    <div class="col-lg-4">
+      <div class="frame-1171275852">
+        <div class="col-lg-8"></div>
+        <div class="col-lg-4">
+          <div class="frame-1171275851" (click)="profile()">
+            <img class="ellipse-3226" [src]="img" />
+            <div class="frame-1171275855">
+              <div class="frame-1171275849">
+                <div class="alex-meian">{{ userName }}</div>
+                <div class="prodcut-manager">{{ userType }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" style="margin-top: 8%">
+  <div class="col-lg-4">
+    <div class="container2">
+      <div
+        class="rectangle-41961"
+        [ngClass]="{
+          'red-color': url1 === '' && data.status === 'Delete Request'
+        }"
+      >
+        <img class="img" src="../../../assets/images/drone-ortho-farm-1.png" />
+        <div class="row">
+          <div class="col-8"><div class="orthomosaic">Orthomosaic</div></div>
+          <div class="col-1">
+            <img
+              src="../../../assets/images/tiff-is-without-future-removebg-preview-1.png"
+            />
+          </div>
+          <div class="col-1">
+            <img
+              src="../../../assets/images/png-clipart-adobe-acrobat-pdf-computer-icons-adobe-reader-edu-invest-adobe-pdf-text-logo-thumbnail-removebg-preview-1.png"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4 text-center">
+            <button class="rectangle-41962" (click)="view3()">View</button>
+          </div>
+          <div class="col-4 text-center">
+            <button class="rectangle-41963" (click)="showpopup1()">
+              Download
+            </button>
+          </div>
+          <div
+            *ngIf="
+              url1 !== null &&
+              (data.status === 'Rework' ||
+                data.status === 'Completed' ||
+                data.status === 'In Approval' ||
+                data.status === 'Delete Request')
+            "
+            class="col-4 text-center"
+          >
+            <button
+              class="fa fa-trash"
+              style="
+                border: none;
+                color: rgb(155, 22, 22);
+                background-color: transparent;
+                margin-top: 13%;
+                font-size: 24px;
+              "
+              (click)="showpopup3()"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="container2">
+      <div
+        class="rectangle-41961"
+        [ngClass]="{
+          'red-color': url2 === '' && data.status === 'Delete Request'
+        }"
+      >
+        <img class="img" src="../../../assets/images/drone-ortho-farm-2.png" />
+        <div class="row">
+          <div class="col-8"><div class="orthomosaic">DEM</div></div>
+          <div class="col-1">
+            <img
+              src="../../../assets/images/tiff-is-without-future-removebg-preview-1.png"
+            />
+          </div>
+          <div class="col-1">
+            <img
+              src="../../../assets/images/png-clipart-adobe-acrobat-pdf-computer-icons-adobe-reader-edu-invest-adobe-pdf-text-logo-thumbnail-removebg-preview-1.png"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 text-center">
+            <button class="rectangle-41962" (click)="view4()">View</button>
+          </div>
+          <div class="col-4 text-center">
+            <button class="rectangle-41963" (click)="showpopup2()">
+              Download
+            </button>
+          </div>
+          <div
+            *ngIf="
+              url2 !== null &&
+              (data.status === 'Rework' ||
+                data.status === 'Completed' ||
+                data.status === 'In Approval' ||
+                data.status === 'Delete Request')
+            "
+            class="col-4 text-center"
+          >
+            <button
+              class="fa fa-trash"
+              style="
+                border: none;
+                color: rgb(155, 22, 22);
+                background-color: transparent;
+                margin-top: 13%;
+                font-size: 24px;
+              "
+              (click)="showpopup4()"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="container2">
+      <div
+        class="rectangle-41961"
+        [ngClass]="{
+          'red-color': url3 === '' && data.status === 'Delete Request'
+        }"
+      >
+        <img class="img" src="../../../assets/images/drone-ortho-farm-3.png" />
+        <div class="row">
+          <div class="col-8"><div class="orthomosaic">Survey Drawing</div></div>
+          <div class="col-2">
+            <img
+              src="../../../assets/images/png-clipart-adobe-acrobat-pdf-computer-icons-adobe-reader-edu-invest-adobe-pdf-text-logo-thumbnail-removebg-preview-1.png"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 text-center">
+            <button class="rectangle-41962" (click)="view5()">View</button>
+          </div>
+          <div class="col-4 text-center">
+            <button class="rectangle-41963" (click)="download4(url3)">
+              Download
+            </button>
+          </div>
+          <div
+            *ngIf="
+              url3 !== null &&
+              (data.status === 'Rework' ||
+                data.status === 'Completed' ||
+                data.status === 'In Approval' ||
+                data.status === 'Delete Request')
+            "
+            class="col-4 text-center"
+          >
+            <button
+              class="fa fa-trash"
+              style="
+                border: none;
+                color: rgb(155, 22, 22);
+                background-color: transparent;
+                margin-top: 13%;
+                font-size: 24px;
+              "
+              (click)="showpopup5()"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-4">
+    <div class="container2">
+      <div
+        class="rectangle-41961"
+        [ngClass]="{
+          'red-color': url4 === '' && data.status === 'Delete Request'
+        }"
+      >
+        <img class="img" src="../../../assets/images/drone-ortho-farm-4.png" />
+        <div class="row">
+          <div class="col-8"><div class="orthomosaic">3D</div></div>
+          <div class="col-1">
+            <img
+              src="../../../assets/images/fbx-file-document-icon-vector-24675603-removebg-preview-1.png"
+            />
+          </div>
+          <div class="col-1">
+            <img src="../../../assets/images/image-removebg-preview-1.png" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 text-center">
+            <button class="rectangle-41962" id="tiffViewer" (click)="view2()">
+              View
+            </button>
+          </div>
+          <div class="col-4 text-center">
+            <button class="rectangle-41963" (click)="download1(url4)">
+              Download
+            </button>
+          </div>
+          <div
+            *ngIf="
+              url4 !== null &&
+              (data.status === 'Rework' ||
+                data.status === 'Completed' ||
+                data.status === 'In Approval' ||
+                data.status === 'Delete Request')
+            "
+            class="col-4 text-center"
+          >
+            <button
+              class="fa fa-trash"
+              style="
+                border: none;
+                color: rgb(155, 22, 22);
+                background-color: transparent;
+                margin-top: 13%;
+                font-size: 24px;
+              "
+              (click)="showpopup6()"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="container2">
+      <div
+        class="rectangle-41961"
+        [ngClass]="{
+          'red-color': url7 === '' && data.status === 'Delete Request'
+        }"
+      >
+        <img class="img" src="../../../assets/images/drone-ortho-farm-5.png" />
+        <div class="row">
+          <div class="col-8"><div class="orthomosaic">KMZ</div></div>
+          <div class="col-1">
+            <img
+              src="../../../assets/images/keyhole-markup-language-1-removebg-preview-2.png"
+            />
+          </div>
+          <div class="col-1">
+            <img
+              src="../../../assets/images/kmz-icon-18-removebg-preview-1-2.png"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 text-center">
+            <button class="rectangle-41962" (click)="view1()">View</button>
+          </div>
+          <div class="col-4 text-center">
+            <button class="rectangle-41963" (click)="showpopup()">
+              Download
+            </button>
+          </div>
+          <div
+            *ngIf="
+              url7 !== null &&
+              (data.status === 'Rework' ||
+                data.status === 'Completed' ||
+                data.status === 'In Approval' ||
+                data.status === 'Delete Request')
+            "
+            class="col-4 text-center"
+          >
+            <button
+              class="fa fa-trash"
+              style="
+                border: none;
+                color: rgb(155, 22, 22);
+                background-color: transparent;
+                margin-top: 13%;
+                font-size: 24px;
+              "
+              (click)="showpopup7()"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="assets/js/tiff.min.js"></script>
+<div class="popup-container" *ngIf="showPopup">
+  <div class="popup">
+    <div class="row">
+      <div class="col-10">
+        <h3 style="display: flex">Project</h3>
+      </div>
+      <div class="col-1 fa fa-times" (click)="closePopup()"></div>
+    </div>
+    <hr />
+    <form>
+      <div *ngIf="url7">
+        <div class="form-group">
+          <label for="reason">2D KML</label>
+          <button
+            class="btn btn-outline-info"
+            (click)="download3(url5)"
+            style="margin-left: 73px; width: 30%; padding: 5px"
+          >
+            Download
+          </button>
+        </div>
+        <div class="form-group">
+          <label for="reason">3D KML</label>
+          <button
+            class="btn btn-outline-info"
+            (click)="download3(url6)"
+            style="margin-left: 73px; width: 30%; padding: 5px"
+          >
+            Download
+          </button>
+        </div>
+        <div class="form-group">
+          <label for="reason">Geotag KML</label>
+          <button
+            class="btn btn-outline-info"
+            (click)="download3(url7)"
+            style="margin-left: 50px; width: 30%; padding: 5px"
+          >
+            Download
+          </button>
+        </div>
+      </div>
+      <span *ngIf="!url7"
+        >The File is Deleted. Ask Your Admin to Reupload.</span
+      >
+    </form>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showPopup1">
+  <div class="popup">
+    <div class="row">
+      <div class="col-10">
+        <h3 style="display: flex">Download</h3>
+      </div>
+      <div class="col-1 fa fa-times" (click)="closePopup1()"></div>
+    </div>
+    <hr />
+    <form>
+      <div *ngIf="url1">
+        <div class="form-group">
+          <label for="reason">Tif</label>
+          <button
+            class="btn btn-outline-info"
+            (click)="download3(url1)"
+            style="margin-left: 73px; width: 30%; padding: 5px"
+          >
+            Download
+          </button>
+        </div>
+        <div class="form-group">
+          <label for="reason">Pdf</label>
+          <button
+            class="btn btn-outline-info"
+            (click)="download3(url8)"
+            style="margin-left: 73px; width: 30%; padding: 5px"
+          >
+            Download
+          </button>
+        </div>
+      </div>
+      <span *ngIf="!url1"
+        >The File is Deleted. Ask Your Admin to Reupload.</span
+      >
+    </form>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showPopup2">
+  <div class="popup">
+    <div class="row">
+      <div class="col-10">
+        <h3 style="display: flex">Download</h3>
+      </div>
+      <div class="col-1 fa fa-times" (click)="closePopup2()"></div>
+    </div>
+    <hr />
+    <form>
+      <div *ngIf="url2">
+        <div class="form-group">
+          <label for="reason">Tif</label>
+          <button
+            class="btn btn-outline-info"
+            (click)="download3(url2)"
+            style="margin-left: 73px; width: 30%; padding: 5px"
+          >
+            Download
+          </button>
+        </div>
+        <div class="form-group">
+          <label for="reason">Pdf</label>
+          <button
+            class="btn btn-outline-info"
+            (click)="download3(url9)"
+            style="margin-left: 73px; width: 30%; padding: 5px"
+          >
+            Download
+          </button>
+        </div>
+      </div>
+      <span *ngIf="!url2"
+        >The File is Deleted. Ask Your Admin to Reupload.</span
+      >
+    </form>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showPopup3">
+  <div class="popup">
+    <div class="row">
+      <div class="col-10">
+        <h3 style="display: flex">Delete</h3>
+      </div>
+      <div class="col-1 fa fa-times" (click)="closePopup3()"></div>
+    </div>
+    <hr />
+    <form [formGroup]="viewForm">
+      <div class="form-group">
+        <label for="reason">Comments</label>
+        <input type="text" class="form-control" formControlName="comments" />
+      </div>
+      <button
+        class="btn btn-outline-info"
+        (click)="delete1()"
+        style="margin-left: 73px; width: 30%; padding: 5px"
+      >
+        Delete
+      </button>
+    </form>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showPopup4">
+  <div class="popup">
+    <div class="row">
+      <div class="col-10">
+        <h3 style="display: flex">Delete</h3>
+      </div>
+      <div class="col-1 fa fa-times" (click)="closePopup4()"></div>
+    </div>
+    <hr />
+    <form [formGroup]="viewForm">
+      <div class="form-group">
+        <label for="reason">Comments</label>
+        <input type="text" class="form-control" formControlName="comments" />
+      </div>
+      <button
+        class="btn btn-outline-info"
+        (click)="delete2()"
+        style="margin-left: 73px; width: 30%; padding: 5px"
+      >
+        Delete
+      </button>
+    </form>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showPopup5">
+  <div class="popup">
+    <div class="row">
+      <div class="col-10">
+        <h3 style="display: flex">Delete</h3>
+      </div>
+      <div class="col-1 fa fa-times" (click)="closePopup5()"></div>
+    </div>
+    <hr />
+    <form [formGroup]="viewForm">
+      <div class="form-group">
+        <label for="reason">Comments</label>
+        <input type="text" class="form-control" formControlName="comments" />
+      </div>
+      <button
+        class="btn btn-outline-info"
+        (click)="delete3()"
+        style="margin-left: 73px; width: 30%; padding: 5px"
+      >
+        Delete
+      </button>
+    </form>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showPopup6">
+  <div class="popup">
+    <div class="row">
+      <div class="col-10">
+        <h3 style="display: flex">Delete</h3>
+      </div>
+      <div class="col-1 fa fa-times" (click)="closePopup6()"></div>
+    </div>
+    <hr />
+    <form [formGroup]="viewForm">
+      <div class="form-group">
+        <label for="reason">Comments</label>
+        <input type="text" class="form-control" formControlName="comments" />
+      </div>
+      <button
+        class="btn btn-outline-info"
+        (click)="delete4()"
+        style="margin-left: 73px; width: 30%; padding: 5px"
+      >
+        Delete
+      </button>
+    </form>
+  </div>
+</div>
+<div class="popup-container" *ngIf="showPopup7">
+  <div class="popup">
+    <div class="row">
+      <div class="col-10">
+        <h3 style="display: flex">Delete</h3>
+      </div>
+      <div class="col-1 fa fa-times" (click)="closePopup7()"></div>
+    </div>
+    <hr />
+    <form [formGroup]="viewForm">
+      <div class="form-group">
+        <label for="reason">Comments</label>
+        <input type="text" class="form-control" formControlName="comments" />
+      </div>
+      <button
+        class="btn btn-outline-info"
+        (click)="delete5()"
+        style="margin-left: 73px; width: 30%; padding: 5px"
+      >
+        Delete
+      </button>
+    </form>
+  </div>
+</div>
